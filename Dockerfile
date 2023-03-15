@@ -11,4 +11,3 @@ RUN pip3 install -r requirements.txt
 COPY . .
 
 CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "src.main:create_app", "--bind", "0.0.0.0:8000"]
-#CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "80"]
