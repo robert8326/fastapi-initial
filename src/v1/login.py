@@ -1,6 +1,8 @@
-from main import app
+from fastapi import APIRouter
+
+router = APIRouter()
 
 
-@app.get("/", tags=['login'])
+@router.get("/", tags=['login'])
 def read_root():
     return {"Hello": "World"}

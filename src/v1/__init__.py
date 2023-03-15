@@ -1,1 +1,5 @@
-from . import *
+from . import login
+
+routers = [
+    login.router
+]

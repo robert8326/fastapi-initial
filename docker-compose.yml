@@ -1,0 +1,30 @@
+version: "3"
+services:
+  db:
+    image: postgres:13-alpine
+    env_file:
+      - .env
+    volumes:
+      - pg_data:/var/lib/postgresql
+    restart: always
+    ports:
+      - '5434:5432'
+
+  redis:
+    image: redis:3
+    expose:
+      - 6378
+
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/fastapi-project:ro
+    depends_on:
+      - db
+      - redis
+
+
+volumes:
+  pg_data:
